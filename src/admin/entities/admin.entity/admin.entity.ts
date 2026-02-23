@@ -1,24 +1,22 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
-import { User } from '../../../users/entities/user.entity/user.entity';
 import { Role } from '../../../roles/entities/role.entity/role.entity';
 
 @Entity()
-export class Monitor {
+export class Admin {
 
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  subject: string;
+  username: string;
 
   @Column()
-  availability: string;
+  password: string;
 
-  @ManyToOne(() => User)
-  @JoinColumn({ name: 'userId' })
-  user: User;
+  @Column()
+  email: string;
 
-  @ManyToOne(() => Role, role => role.monitors)
+  @ManyToOne(() => Role, role => role.admins)
   @JoinColumn({ name: 'roleId' })
   role: Role;
 }

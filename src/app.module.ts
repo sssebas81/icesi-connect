@@ -13,6 +13,8 @@ import { ReportsModule } from './reports/reports.module';
 import { MonitorsModule } from './monitors/monitors.module';
 import { CategoriesModule } from './categories/categories.module';
 import { FacultyModule } from './faculty/faculty.module';
+import { RolesModule } from './roles/roles.module';
+import { AdminModule } from './admin/admin.module';
 
 type SupportedDbTypes =
     | "mysql"
@@ -50,6 +52,8 @@ type SupportedDbTypes =
         MonitorsModule,
         CategoriesModule,
         FacultyModule,
+        RolesModule,
+        AdminModule,
     ],
     controllers: [AppController],
     providers: [AppService],

@@ -1,7 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne, JoinColumn } from 'typeorm';
 import { Post } from '../../../posts/entities/post.entity/post.entity';
 import { Answer } from '../../../answers/entities/answer.entity/answer.entity';
+import { Role } from '../../../roles/entities/role.entity/role.entity';
 
 @Entity()
 export class User {
@@ -39,8 +39,9 @@ export class User {
   @Column({ default: 0 })
   thanks: number;
 
-  @Column()
-  role: string;
+  @ManyToOne(() => Role, role => role.users)
+  @JoinColumn({ name: 'roleId' })
+  role: Role;
 
   @OneToMany(() => Post, post => post.user)
   posts: Post[];
